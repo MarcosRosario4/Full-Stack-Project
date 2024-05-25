@@ -15,6 +15,7 @@ app.get('/', (req, res)=>{
     res.json({ info: 'This is a Node/Express App'})
 })
 
+app.options('/albums', cors())
 app.post('/albums', (req, res)=>{
     
 

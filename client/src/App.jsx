@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Form from './components/Form'
 
 function App() {
 
@@ -19,26 +20,28 @@ let getAlbums = async () => {
   } catch(error) {
     console.log(error)
   }
-
 }
 
-let createAlbum = async () => {
-
-}
 
 useEffect (()=> {
-  getAlbums()
-
+  if(!albums){
+  } getAlbums()
 }, [])
 
 
 let renderAlbums = () => {
   if(albums){
-    return albums.map((album)=> {
+    return albums.map((album, index)=> {
       return (
-        <div>
-          <h2>{album.title}</h2>
-          <h3>{album.author}</h3>
+        <div key={index}>
+          <h2>
+            {album.title}
+            </h2>
+
+          <h3>
+            {album.author}
+            </h3>
+
         </div>
       )
     })
@@ -57,6 +60,7 @@ let renderLoading = () => {
 
     <div>
       <h1>Welcome to Music World</h1>
+      <Form/>
       <div>
         {loading ? renderLoading : renderAlbums()}
       </div>
